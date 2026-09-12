@@ -1,0 +1,6 @@
+interface:
+  display_name: "Zotero 文献助手"
+  short_description: "从零安装到读完第一篇论文，之后按需解决文献整理、引用、扫描件与连接问题"
+  default_prompt: "使用 $zotero，根据我的现有环境补齐首次上手流程，带我完成第一篇论文体验；已经上手后直接解决我提出的具体问题。"
+policy:
+  allow_implicit_invocation: true
