@@ -1,0 +1,12 @@
+{
+  "id": "connection-config-is-not-health",
+  "status": "verified",
+  "keywords": ["连接", "MCP", "config", "健康检查", "collections list"],
+  "symptom": "CLI configuration prints successfully but library readiness is unknown.",
+  "applies_to": "54yyyu zotero-mcp-server 0.11.0 local mode",
+  "cause": "config displays settings only. collections list is not a supported read subcommand.",
+  "resolution": ["Test a real loopback Local API GET", "Use get collections or an enabled MCP collection read", "Keep MCP conversation loading separate from CLI readiness"],
+  "verification": {"kind": "source_inspection_and_local_read", "check": "Inspected cli_standalone.py cmd_config and cmd_get; local collection GET returned JSON records", "result": "passed"},
+  "limitations": "Recheck command syntax after an upstream version change.",
+  "verified_at": "2026-09-12"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "chinese-ocr-font-and-language",
+  "status": "verified",
+  "keywords": ["OCR", "中文", "字体", "复制", "扫描件"],
+  "symptom": "Chinese OCR needs recognition data and a usable text-layer font.",
+  "applies_to": "macOS OCRmyPDF 17.11.0, Tesseract 5.5.3, Chinese and English scanned pages",
+  "cause": "Recognition languages and CJK PDF rendering fonts are separate dependencies.",
+  "resolution": ["Check chi_sim/chi_tra/eng availability for the requested language", "Check the selected renderer and CJK font when copied text is missing", "Write a new output bundle and verify extracted Chinese plus source checksum"],
+  "verification": {"kind": "synthetic_pdf_local_smoke", "check": "Two-page scanned test produced searchable English and Chinese with Noto Sans SC; page count and original checksum preserved", "result": "passed"},
+  "limitations": "One Chinese character was misrecognized in the test. This validates pipeline operation, not perfect OCR or actual thesis paper quality.",
+  "verified_at": "2026-09-12"
+}
