@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Zotero 助手 Skill 使用手册：从安装、连接文献库，到第一篇论文的阅读、摘录、研究卡片与引用。由 yesaze 编写。">
+  <meta name="author" content="yesaze">
+  <meta name="color-scheme" content="light">
+  <title>Zotero 助手 · 使用手册 | yesaze</title>
+  <style>
+    :root{--paper:#f6f5f0;--white:#fffefa;--ink:#203633;--muted:#61716b;--line:#dce1d7;--accent:#a7482d;--soft:#f7e9df;--green:#e9efe5;--nav:250px;--radius:16px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:26px}body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:16px;line-height:1.8;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration-color:#aab9ad;text-underline-offset:4px}a:hover{color:var(--accent)}button,input{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #ad6746;outline-offset:4px}button:disabled{cursor:default}h1,h2,h3,p{margin:0}h1,h2,h3{line-height:1.4;text-wrap:balance}h1{font-size:clamp(34px,4vw,54px);font-weight:720;letter-spacing:-1.6px}h2{font-size:29px;letter-spacing:-.5px}h3{font-size:19px}p+p{margin-top:12px}strong{font-weight:670}small{font-size:13px}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.88em;background:#edf0e9;padding:2px 5px;border-radius:4px;overflow-wrap:anywhere}ul,ol{padding-left:22px;margin:12px 0 0}li+li{margin-top:7px}li::marker{color:var(--accent)}[hidden]{display:none!important}.skip{position:absolute;left:16px;top:-80px;z-index:10;background:var(--ink);color:white;padding:10px 20px;border-radius:8px}.skip:focus{top:12px}
+    .shell{max-width:1480px;margin:0 auto;display:grid;grid-template-columns:var(--nav) minmax(0,1fr);gap:52px;padding:34px 48px 0 36px}.sidebar{position:sticky;top:28px;align-self:start;max-height:calc(100vh - 56px);overflow:auto;padding-right:4px}.brand{display:flex;gap:12px;align-items:center;text-decoration:none;margin-bottom:23px}.brand-mark{width:40px;height:44px;background:var(--ink);border-radius:6px 13px 13px 6px;color:var(--white);display:grid;place-items:center;font-size:25px;font-family:Georgia,serif;box-shadow:inset 4px 0 0 #637965}.brand-title{font-size:17px;font-weight:700;line-height:1.35}.brand-sub{display:block;color:var(--muted);font-size:11px;letter-spacing:1.2px;margin-top:3px}.search-label{display:block;color:var(--muted);font-size:12px;margin-bottom:5px}.search-wrap{position:relative}.search-wrap input{width:100%;border:1px solid #cbd3c8;border-radius:9px;background:var(--white);padding:10px 36px 10px 11px;font-size:14px;min-height:44px}.search-clear{position:absolute;right:4px;top:4px;border:0;background:none;color:var(--muted);width:35px;height:36px;font-size:22px}.search-status{min-height:37px;padding-top:5px;color:var(--muted);font-size:12px;line-height:1.6}.nav-group{font-size:11px;letter-spacing:1px;color:var(--muted);margin:18px 10px 7px}.nav-list{display:grid;gap:3px}.nav-list a{display:flex;gap:10px;text-decoration:none;font-size:14px;padding:8px 10px;border-radius:7px;border-left:2px solid transparent}.nav-list a[aria-current="location"]{background:var(--green);border-left-color:#5e7b62;font-weight:650}.nav-num{color:#829184;font-size:12px;min-width:18px}.side-note{border-top:1px solid var(--line);padding-top:18px;margin-top:24px;font-size:12px;color:var(--muted);line-height:1.7}.side-note strong{color:var(--ink)}.side-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:11px}.text-button{border:0;padding:0;background:none;text-decoration:underline;text-underline-offset:4px;font-size:12px;color:var(--ink)}
+    main{min-width:0;padding-top:2px}.masthead{display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:1px solid var(--line);padding-bottom:19px;color:var(--muted);font-size:12px;letter-spacing:1px}.version{border:1px solid #cfd8ca;background:var(--white);padding:3px 9px;border-radius:5px;letter-spacing:.3px;white-space:nowrap}.hero{padding:50px 0 34px}.eyebrow{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:1.6px;margin-bottom:15px}.hero h1 span{color:#567457}.hero-intro{max-width:700px;font-size:17px;color:var(--muted);margin-top:20px;line-height:1.9}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 30px}.button{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:45px;border:1px solid var(--ink);border-radius:8px;padding:8px 18px;text-decoration:none;font-size:14px;font-weight:620;background:var(--ink);color:white}.button:hover{background:#355044;color:white}.button.secondary{background:transparent;color:var(--ink);border-color:#c4cfc0}.button.secondary:hover{background:var(--green)}.route{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:var(--radius);background:var(--white);overflow:hidden}.route a{padding:18px 16px;text-decoration:none;border-right:1px solid var(--line);position:relative}.route a:last-child{border:0}.route a:hover{background:var(--green)}.route small{display:block;color:var(--accent);font-size:11px;letter-spacing:1px;margin-bottom:7px}.route strong{display:block;font-size:15px}.route span{display:block;color:var(--muted);font-size:12px;margin-top:3px}.section{padding:39px 0 43px;border-top:1px solid var(--line);scroll-margin-top:20px}.section-head{display:flex;align-items:flex-start;gap:17px;margin-bottom:17px}.section-number{font-family:Georgia,serif;font-size:32px;font-style:italic;color:#93a18e;line-height:1.25}.section-kicker{color:var(--muted);font-size:11px;letter-spacing:1.1px;margin-bottom:4px}.lead{color:var(--muted);max-width:780px;margin-bottom:24px}.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:22px}.card h3{margin-bottom:9px}.card p,.card li{font-size:14px}.card-label{display:block;color:var(--accent);font-size:11px;font-weight:650;letter-spacing:1px;margin-bottom:8px}.note{border-left:3px solid #759371;background:var(--green);padding:15px 19px;border-radius:0 9px 9px 0;margin-top:20px;font-size:14px}.note.warm{border-color:#bc7251;background:var(--soft)}.note p+p{margin-top:7px}.quiet{font-size:13px;color:var(--muted);margin-top:12px}.source{font-size:12px;color:var(--muted);margin-top:12px}.prompt{background:#eef1e9;border:1px solid #d5decf;border-radius:13px;margin-top:20px;overflow:hidden}.prompt-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;border-bottom:1px solid #d5decf}.prompt-head span{font-size:12px;color:#52684f;font-weight:650}.copy-button{border:1px solid #b9c7b3;background:var(--white);color:var(--ink);font-size:12px;border-radius:6px;padding:5px 10px;min-height:33px;white-space:nowrap}.copy-button:hover{background:#dce8d5}.prompt-text{padding:15px 17px;font-size:14px;line-height:1.9;white-space:pre-wrap;overflow-wrap:anywhere;user-select:text}.prompt-foot{font-size:12px;color:var(--muted);padding:0 17px 13px}.stack{display:grid;gap:13px;margin-top:18px}.step{display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;border:1px solid var(--line);border-radius:12px;padding:19px 21px;background:var(--white)}.step-badge{width:31px;height:31px;display:grid;place-items:center;background:var(--green);border-radius:50%;font-size:13px;color:#496542;font-weight:700}.step h3{font-size:17px;margin:1px 0 8px}.step p{font-size:14px}.verify{display:block;margin-top:9px;font-size:12px;color:#496542}.verify:before{content:"验收 · ";font-weight:700}.table-wrap{overflow:auto;margin-top:18px;border:1px solid var(--line);border-radius:12px}table{width:100%;border-collapse:collapse;font-size:14px;min-width:520px;text-align:left}th{background:var(--green);font-size:12px;font-weight:650;color:#4c6350}td,th{padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top}tr:last-child td{border:0}td{background:var(--white)}td:first-child{width:24%;font-weight:620}.label{display:inline-block;padding:2px 7px;border-radius:4px;background:var(--green);font-size:11px;line-height:1.6;color:#425c46;font-weight:650}.label.abstract{background:#e9edf4;color:#52667f}.label.metadata{background:#f2eadc;color:#806945}.label.inference{background:#eee7ef;color:#775977}.card-preview{border:1px solid var(--line);border-radius:13px;margin-top:18px;background:var(--white);overflow:hidden}.preview-head{padding:17px 21px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:center}.preview-head strong{font-size:15px}.preview-head small{color:var(--muted)}.preview-row{display:grid;grid-template-columns:145px 1fr;gap:16px;padding:13px 21px;border-bottom:1px dashed var(--line);font-size:13px}.preview-row:last-child{border:0}.preview-row strong{font-size:13px}.preview-row p{color:var(--muted)}.preview-row .label{margin-right:6px}.mini-flow{display:flex;align-items:center;gap:12px;margin:20px 0;flex-wrap:wrap}.mini-flow span{padding:8px 13px;background:var(--white);border:1px solid var(--line);border-radius:7px;font-size:13px}.mini-flow b{font-weight:400;color:#8a9b86}.troubles{display:grid;gap:10px}.troubles details{border:1px solid var(--line);border-radius:11px;background:var(--white)}summary{cursor:pointer;list-style:none;padding:16px 19px;font-size:15px;font-weight:640;display:flex;gap:12px;justify-content:space-between;align-items:center}summary::-webkit-details-marker{display:none}summary:after{content:"＋";font-size:19px;color:#82967e;font-weight:400;flex-shrink:0}details[open]>summary:after{content:"−"}details[open]>summary{border-bottom:1px solid var(--line)}.detail-body{padding:17px 19px 19px;font-size:14px}.detail-body .prompt{margin-top:14px}.detail-body .prompt-text{font-size:13px}.checklist{list-style:none;padding:0;margin:17px 0 0}.checklist li{padding-left:24px;position:relative;font-size:14px}.checklist li:before{content:"□";position:absolute;left:0;color:#76936f}.checklist li+li{margin-top:10px}.closing{background:var(--ink);color:var(--white);padding:28px;border-radius:var(--radius);margin:12px 0 38px}.closing h3{font-size:24px;margin-bottom:8px}.closing p{color:#d1dccf;font-size:14px}.closing a{color:#f8e6d6;text-decoration-color:#809885}.footer{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding:20px 0 34px;font-size:12px;color:var(--muted)}.empty{border:1px dashed #b9c5b3;background:var(--white);padding:32px;border-radius:14px;margin:30px 0}.empty h2{font-size:22px;margin-bottom:9px}.empty p{color:var(--muted);font-size:14px}.empty button{margin-top:16px}.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);padding:12px 20px;background:var(--ink);color:white;border-radius:9px;box-shadow:0 4px 24px #20363325;z-index:20;font-size:14px;max-width:calc(100vw - 30px);width:max-content;line-height:1.6}.noscript{padding:16px;background:var(--soft);font-size:14px}.print-note{display:none}
+    @media(max-width:1100px){.shell{gap:30px;padding:28px 28px 0 24px;--nav:215px}.grid-3{grid-template-columns:1fr}.hero{padding-top:36px}.card{padding:19px}}
+    @media(max-width:800px){.shell{display:block;padding:18px 20px 0}.sidebar{position:relative;top:auto;max-height:none;overflow:visible;padding:0}.brand{margin-bottom:16px}.brand-mark{width:34px;height:38px}.search-label,.side-note,.nav-group{display:none}.search-wrap{max-width:none}.search-status{min-height:29px}.nav-list{display:flex;gap:7px;overflow-x:auto;white-space:nowrap;padding-bottom:14px;margin:0 -3px 13px}.nav-list a{font-size:12px;background:#eef0e9;padding:7px 10px}.nav-num{display:none}.masthead{font-size:10px;padding-top:7px}.hero{padding:32px 0 29px}.hero h1{font-size:36px;letter-spacing:-1px}.hero-intro{font-size:15px}.hero-actions{margin:20px 0 24px}.route{grid-template-columns:repeat(2,1fr)}.route a{padding:14px 15px}.route a:nth-child(2){border-right:0}.route a:nth-child(-n+2){border-bottom:1px solid var(--line)}.section{padding:30px 0 32px}.section-head{gap:13px}.section-number{font-size:28px}h2{font-size:25px}.lead{font-size:14px}.grid-2{grid-template-columns:1fr}.step{padding:16px;gap:10px;grid-template-columns:30px minmax(0,1fr)}.preview-row{grid-template-columns:1fr;gap:5px;padding:12px 16px}.preview-head{padding:14px 16px;align-items:flex-start;flex-direction:column;gap:2px}.footer{flex-direction:column;gap:5px}.closing{padding:23px}.prompt-head{padding:9px 12px}.prompt-text{padding:13px 14px}.table-wrap{border-radius:9px}.toast{bottom:14px;font-size:13px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+    @media print{@page{margin:17mm 15mm}body{background:white;color:#111;font-size:10.5pt;line-height:1.65}.shell{display:block;padding:0;max-width:none}.sidebar,.hero-actions,.copy-button,.toast,.search-status,.empty,.noscript{display:none!important}.section[hidden],.hero[hidden],.closing[hidden]{display:block!important}.masthead{color:#555}.hero{padding:22px 0}.hero h1{font-size:28pt}.hero-intro{font-size:11pt}.section{padding:23px 0;break-before:auto}.section-head{break-after:avoid}h2{font-size:20pt}h3{font-size:13pt}.lead{color:#444;font-size:10.5pt}.card,.step,.prompt,.note,.preview-row,.route a,details{break-inside:avoid}.card,.step,.prompt,.note,.card-preview,.route,.troubles details{background:white;box-shadow:none}.grid-3{grid-template-columns:repeat(3,1fr)}.card p,.card li,.step p,.prompt-text,.detail-body,.checklist li{font-size:10pt}.table-wrap{overflow:visible}table{min-width:0;font-size:10pt}td,th{background:white;padding:8px 10px}.prompt-head{padding:7px 12px}.prompt-text{padding:10px 12px}.source{font-size:9pt}.closing{background:white;color:#111;border:1px solid #aaa;padding:18px}.closing p,.closing a{color:#333}.footer{padding-bottom:0}.footer a{color:#333}.print-note{display:block;font-size:9pt;color:#555;margin-top:12px}.troubles summary{padding:11px 14px;font-size:11pt;break-after:avoid}.detail-body{padding:12px 14px}summary:after{display:none}.section-number{color:#666}.label{border:1px solid #bbb;background:white!important;color:#222!important}a{color:inherit;text-decoration:none}a[href^="https://www.zotero.org"]:after{content:" [Zotero 官方文档]";font-size:8pt;color:#777}.prompt-foot,.quiet{font-size:9pt}.hero h1 span{color:#333}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">跳到手册正文</a>
+  <noscript><div class="noscript">手册正文可直接阅读。当前浏览器未启用 JavaScript，搜索与复制按钮不可用；请手动选中提示词复制，或使用浏览器的“查找”。</div></noscript>
+  <div class="shell">
+    <aside class="sidebar" aria-label="手册导航">
+      <a class="brand" href="#overview" aria-label="Zotero 助手使用手册首页"><span class="brand-mark" aria-hidden="true">z</span><span class="brand-title">Zotero 助手<span class="brand-sub">THE RESEARCH COMPANION</span></span></a>
+      <label class="search-label" for="manual-search">在手册中查找</label>
+      <div class="search-wrap"><input id="manual-search" type="search" placeholder="搜索：安装、扫描件、引用…" autocomplete="off" aria-label="搜索手册章节" aria-describedby="search-status"><button id="search-clear" class="search-clear" type="button" aria-label="清空搜索" hidden>×</button></div>
+      <p id="search-status" class="search-status" role="status" aria-live="polite">搜索本手册，不查询你的文献库。</p>
+      <p class="nav-group">从零开始</p>
+      <nav class="nav-list" aria-label="章节目录">
+        <a href="#install"><span class="nav-num">01</span>安装 Skill</a>
+        <a href="#connect"><span class="nav-num">02</span>连接 Zotero</a>
+        <a href="#first-paper"><span class="nav-num">03</span>读第一篇论文</a>
+        <a href="#research-card"><span class="nav-num">04</span>做研究卡片</a>
+        <a href="#citations"><span class="nav-num">05</span>完成一次引用</a>
+        <a href="#daily"><span class="nav-num">06</span>日常使用</a>
+        <a href="#troubleshooting"><span class="nav-num">07</span>按问题排障</a>
+        <a href="#privacy"><span class="nav-num">08</span>数据与授权</a>
+        <a href="#updates"><span class="nav-num">09</span>更新与经验</a>
+        <a href="#completion"><span class="nav-num">10</span>完成与续接</a>
+      </nav>
+      <div class="side-note"><strong>版本 1.1.1 · yesaze</strong><br>单文件手册，可保存到本机离线阅读。只有访问外部链接时需要联网。<div class="side-actions"><button class="text-button" id="print-button" type="button">打印 / 保存 PDF</button><a href="https://github.com/yesaze2077/zotero-assistant-skill" target="_blank" rel="noopener noreferrer">GitHub 仓库 ↗</a></div></div>
+    </aside>
+    <main id="main">
+      <div class="masthead"><span>使用手册 / 面向科研新手</span><span class="version">v1.1.1 · by yesaze</span></div>
+      <header id="overview" class="hero">
+        <p class="eyebrow">你的第一篇，从这里开始</p>
+        <h1>从安装助手，<br>到<span>读懂第一篇论文。</span></h1>
+        <p class="hero-intro">用自然语言告诉助手你想做什么。它会检查环境、连接文献库，协助你阅读原文、留下一条自己的理解，再整理成有来源的研究卡片与引用。</p>
+        <div class="hero-actions"><a class="button" href="#install">第一次用，从安装开始 <span aria-hidden="true">↓</span></a><a class="button secondary" href="#daily">已经接通，直接解决问题</a></div>
+        <div class="route" aria-label="入门路线"><a href="#install"><small>01 / 准备</small><strong>安装助手</strong><span>放进你的 AI 客户端</span></a><a href="#connect"><small>02 / 连接</small><strong>接通文献库</strong><span>逐项检查真实能力</span></a><a href="#first-paper"><small>03 / 阅读</small><strong>留下一条证据</strong><span>从一篇、一段开始</span></a><a href="#citations"><small>04 / 使用</small><strong>形成卡片与引用</strong><span>知道结论来自哪里</span></a></div>
+        <p class="quiet">本 Skill 以 Mac 为优先验证环境。Windows / Linux 需按当前工具能力核验；不能把 Mac 上通过的检查视作跨平台保证。</p>
+      </header>
+      <div id="no-results" class="empty" hidden><h2>没有找到匹配章节</h2><p>试试更短的词，例如“PDF”“Word”“隐私”或“连接”。这只是手册搜索，不代表你的文献库中没有结果。</p><button id="reset-search" class="button secondary" type="button">显示全部手册</button></div>
+
+      <section id="install" class="section" data-search="安装 skill 技能 GitHub Codex Claude Code 客户端 首次 下载 安装包">
+        <div class="section-head"><span class="section-number">01</span><div><p class="section-kicker">先让助手知道怎样工作</p><h2>安装 Zotero 助手 Skill</h2></div></div>
+        <p class="lead">先打开已经安装并登录的本地 Codex 或 Claude Code。把下面的话发给它，安装、文件检查和必要命令由助手处理。</p>
+        <div class="grid-2"><div class="card"><span class="card-label">你需要准备</span><h3>一个可工作的本地 AI 客户端</h3><p>它需要能在你的电脑上读取文件、安装 Skill，并在获准的范围内执行本地操作。首次登录由你本人完成。</p><p class="quiet">浏览器里的普通 AI 聊天不自动拥有本机文件与 MCP 权限；Claude Code 与 Claude Desktop 也要分别核实。</p></div><div class="card"><span class="card-label">你将安装什么</span><h3>一套工作方法与辅助脚本</h3><p>安装名是 <code>zotero</code>，入口是仓库根目录的 <code>SKILL.md</code>。它会指导助手工作，<strong>不自带 Zotero、MCP Server、OCR 软件或其他可选 Skill</strong>。</p><p class="quiet">是否需要补装组件，由下一步的真实检查决定。</p></div></div>
+        <div class="prompt"><div class="prompt-head"><span>复制到本地 Codex / Claude Code</span><button class="copy-button" type="button" data-copy="prompt-install">复制提示词</button></div><p class="prompt-text" id="prompt-install">请从 https://github.com/yesaze2077/zotero-assistant-skill 为当前客户端安装 Zotero 助手 Skill，安装名为 zotero，入口在仓库根目录 SKILL.md。先检查来源、文件内容与当前客户端支持的安装方式，再完成安全的本地安装。保留已有同名 Skill 的内容和配置；如果发生冲突，先给出具体处理方案。不要把安装 Skill 当成 Zotero、MCP 或 OCR 已安装。安装后确认当前客户端能发现并使用它，不要让我手动执行终端命令。</p></div>
+        <div class="note"><strong>安装完成看什么？</strong> 助手应确认已找到 <code>zotero</code> 并读取其入口。若客户端需要刷新或重新打开对话，只做这一步，然后再次验证。接着说：“使用 Zotero 助手，带我从当前进度开始。”</div>
+        <p class="source">项目入口：<a href="https://github.com/yesaze2077/zotero-assistant-skill" target="_blank" rel="noopener noreferrer">yesaze2077 / zotero-assistant-skill ↗</a></p>
+      </section>
+
+      <section id="connect" class="section" data-search="Zotero Desktop 桌面 Connector Chrome Edge Firefox Safari Local API localhost MCP Python uv Homebrew 连接 安装 设置 高级 key">
+        <div class="section-head"><span class="section-number">02</span><div><p class="section-kicker">每一层都要实际读一次</p><h2>连接你的文献库</h2></div></div>
+        <p class="lead">已有软件直接复用，缺什么再补什么。先让助手判断当前能力；缺少 Homebrew、uv 或某个可选组件，不应直接中止任务。</p>
+        <div class="stack">
+          <article class="step"><span class="step-badge">1</span><div><h3>Zotero Desktop：保存与打开文献</h3><p>助手检查应用是否安装、是否正在运行。缺失时从 Zotero 官方入口安装，再实际打开主窗口。本地体验可以先不登录 Zotero 账号；需要同步时再配置。</p><span class="verify">应用能正常启动，不只是安装文件已经下载。</span><p class="source"><a href="https://www.zotero.org/download/" target="_blank" rel="noopener noreferrer">官方下载 ↗</a> · <a href="https://www.zotero.org/support/installation" target="_blank" rel="noopener noreferrer">安装说明 ↗</a></p></div></article>
+          <article class="step"><span class="step-badge">2</span><div><h3>Connector：从浏览器保存论文</h3><p>只安装你实际使用的浏览器扩展。Chrome、Edge、Firefox 从官方下载页进入对应入口；Safari 用户启动 Zotero 后，在 Safari 的“设置 → 扩展”中检查 Zotero Connector。</p><p>打开论文介绍页，用 Connector 保存到指定集合，再让助手读回同一条目的作者、年份和 DOI。优先保存论文介绍页，元数据通常更完整。</p><span class="verify">当前浏览器已启用，并且真实保存的条目能在库里找到。</span><p class="source"><a href="https://www.zotero.org/support/adding_items_to_zotero" target="_blank" rel="noopener noreferrer">官方添加条目说明 ↗</a> · <a href="https://www.zotero.org/support/kb/zotero_connector_and_safari" target="_blank" rel="noopener noreferrer">Safari 说明 ↗</a></p></div></article>
+          <article class="step"><span class="step-badge">3</span><div><h3>Local API：让本机程序读到库</h3><p>保持 Zotero 运行。助手实际检查本地 API 的条目与集合读取。如果未开放，检查 <strong>Zotero 设置 → 高级</strong>中允许本机其他应用通信的选项，以当前版本的界面文字为准。助手能代操作就完成，确实需要你点击时只指出必要一项。</p><p><strong>Local API 本身不需要云端 API Key。</strong> 不要为了本机读库把密钥贴进聊天，也不要修改 Zotero 数据库。</p><span class="verify">条目与集合请求返回有效结果；空库返回空列表也可以正常。</span></div></article>
+          <article class="step"><span class="step-badge">4</span><div><h3>MCP：让当前 AI 客户端调用读取工具</h3><p>MCP 是 AI 客户端与 Zotero 之间的工具连接。助手复用已有服务；确需安装时核实来源、维护状态、系统兼容性与读取范围，只选择一个实现。先备份配置，只改 Zotero 对应设置，保留已有服务。</p><p>安装 Skill 不会自动完成 MCP 配置。Codex 中连接成功，也不代表 Claude Code 已经连接；换客户端要重新验证。</p><span class="verify">MCP 协议连接成功，并在你正在使用的客户端中实际调用集合读取工具。</span></div></article>
+        </div>
+        <div class="prompt"><div class="prompt-head"><span>一次交给助手处理</span><button class="copy-button" type="button" data-copy="prompt-connect">复制提示词</button></div><p class="prompt-text" id="prompt-connect">使用 Zotero 助手，检查这台电脑上的 Zotero Desktop、我正在使用的浏览器 Connector、Local API 和当前 AI 客户端的 MCP。复用已可用组件，完成缺失的必要安装与配置，保留已有设置。依次实际读取顶层集合、最近 5 篇文献的标题/作者/年份，并检查一篇真实 PDF 的访问和全文覆盖。先说明能力是否可用；确实需要本人点击时，一次只给一个必要动作。没有全文就明确说明，不要用摘要代替。</p></div>
+        <div class="note warm"><strong>连接与全文是两次验收。</strong> 读到了集合，不代表 PDF 已下载；读到了摘要，也不代表正文已读。已有库可以先从现成文献阅读，暂缓 Connector 保存测试，避免重复导入。</div>
+      </section>
+
+      <section id="first-paper" class="section" data-search="第一篇 论文 阅读 导入 DOI PDF 空库 集合 collection 高亮 批注 annotation 摘录 全文 full text">
+        <div class="section-head"><span class="section-number">03</span><div><p class="section-kicker">从一篇、一段、一个问题开始</p><h2>亲自读第一篇论文</h2></div></div>
+        <p class="lead">先选一篇与你的研究有关、正文可读的论文。不追求一次整理整个库，先走通一个能反复使用的小流程。</p>
+        <div class="grid-2"><div class="card"><span class="card-label">库里已经有论文</span><h3>直接复用现有条目</h3><p>告诉助手集合名称或目标论文，让它核对条目归属与 PDF 附件。无需为了“体验导入”再保存一次。</p></div><div class="card"><span class="card-label">库还是空的</span><h3>给一个链接、DOI 或 PDF</h3><p>助手核实来源，完成已授权的导入并读回。如果没有偏好，可请它寻找合法开放获取的候选；付费墙不会被绕过。</p></div></div>
+        <div class="mini-flow" aria-label="文献结构"><span>集合：按主题组织</span><b aria-hidden="true">→</b><span>文献条目：标题、作者、年份</span><b aria-hidden="true">→</b><span>PDF 附件：论文正文</span></div>
+        <div class="stack">
+          <article class="step"><span class="step-badge">1</span><div><h3>定位论文，核对来源</h3><p>助手找到真实条目和附件，打开目标论文。先确认标题、作者、年份、期刊与 DOI；文件名不能替代题录核验。</p></div></article>
+          <article class="step"><span class="step-badge">2</span><div><h3>带着一个问题看正文</h3><p>例如：“作者用什么证据支持这个结论？” 助手检查 PDF 全页文字覆盖，再阅读相关章节。完整研究卡片需要覆盖问题、方法、结果和局限；要求通读时，应读完全部正文并说明范围。</p></div></article>
+          <article class="step"><span class="step-badge">3</span><div><h3>留下一条你自己的理解</h3><p>让助手定位一段短证据及其页码。你可以在 Zotero 中高亮并写一句笔记，也可以在聊天里用自己的话说：“这条证据对我的研究有什么用？”</p><span class="verify">由你实际完成一次阅读动作。助手写了示范或生成卡片，不等于你已经练习。</span></div></article>
+        </div>
+        <div class="prompt"><div class="prompt-head"><span>开始第一篇体验</span><button class="copy-button" type="button" data-copy="prompt-first">复制提示词</button></div><p class="prompt-text" id="prompt-first">使用 Zotero 助手，带我读第一篇论文。请先从我指定的集合中找一篇与研究问题相关、已有可读 PDF 的论文；如果信息还不够，只问一个关键问题。先核对全文可访问范围，再给我一个阅读问题，定位一段带页码的证据，引导我写一句自己的理解，最后整理成研究卡片和一条可追溯引用。已有条目不要重复导入。</p></div>
+        <div class="note warm"><strong>没有全文时：</strong> 标明 <code>FULL TEXT NOT AVAILABLE</code>，或明确写出仅阅读了哪些页。可以继续做摘要练习，但全文阅读步骤仍待完成。扫描件先去看<a href="#troubleshooting">“PDF 不能复制或文字乱码”</a>。</div>
+        <p class="source"><a href="https://www.zotero.org/support/pdf_reader" target="_blank" rel="noopener noreferrer">Zotero 官方 PDF 阅读器说明 ↗</a></p>
+      </section>
+
+      <section id="research-card" class="section" data-search="研究卡片 research card 研究问题 动机 方法 样本 变量 发现 局限 机会 Evidence Status Full Text Abstract Metadata Inference 页码">
+        <div class="section-head"><span class="section-number">04</span><div><p class="section-kicker">整理理解，也保存证据</p><h2>把阅读变成一张研究卡片</h2></div></div>
+        <p class="lead">卡片要帮你回答“作者做了什么、证据在哪里、我可以怎样使用”。每部分注明来源，未知内容留下空缺或“待核实”。</p>
+        <div class="table-wrap"><table><thead><tr><th>来源标记</th><th>它表示什么</th><th>使用时看什么</th></tr></thead><tbody><tr><td><span class="label">Full Text</span></td><td>实际读取的论文正文</td><td>章节与页码；关键数字应回看原页面。</td></tr><tr><td><span class="label abstract">Abstract</span></td><td>摘要中明确写出的内容</td><td>不能据此补出未提供的方法细节或局限。</td></tr><tr><td><span class="label metadata">Metadata</span></td><td>题录信息，如作者、年份和 DOI</td><td>与论文首页或可靠出版来源核对。</td></tr><tr><td><span class="label inference">Inference</span></td><td>助手或你的推断、借鉴思路</td><td>与原作者的结论分开，并说明推断依据。</td></tr></tbody></table></div>
+        <div class="card-preview"><div class="preview-head"><strong>研究卡片应包含这些内容</strong><small>结构示例 · 不是一篇真实论文的结论</small></div><div class="preview-row"><strong>基本信息</strong><p>Title / Authors / Year / Journal / DOI；文献类型、作者稿或正式版有差异时说明。</p></div><div class="preview-row"><strong>问题与动机</strong><p>Research Question / Research Motivation：研究要解决什么，为什么需要研究。</p></div><div class="preview-row"><strong>研究方法</strong><p>Research Design / Dataset or Sample / Method / Variables：设计、数据或样本、方法和变量；不存在或未披露的项目明确标注。</p></div><div class="preview-row"><strong>发现与局限</strong><p>Key Findings / Limitations：关键结论及证据页码；原文局限与助手指出的潜在问题分开。</p></div><div class="preview-row"><strong>可借鉴与待补</strong><p>Research Opportunities：用于自己论文的哪一部分，还需要找什么证据；建议可标为 Inference。</p></div><div class="preview-row"><strong>Evidence Status</strong><p>逐部分标注来源，列出实际已读范围、关键页码与尚未核实项；如有 OCR 或提取限制也写明。</p></div></div>
+        <div class="prompt"><div class="prompt-head"><span>生成可继续使用的卡片</span><button class="copy-button" type="button" data-copy="prompt-card">复制提示词</button></div><p class="prompt-text" id="prompt-card">请基于这篇论文实际可读取的内容生成研究卡片，包含基本信息、研究问题与动机、设计/样本/方法/变量、关键发现、局限、研究机会，以及 Evidence Status。每部分标注 Full Text、Abstract、Metadata 或 Inference，并给出证据页码。把我的想法与原作者结论分开；补充“用于我论文的哪一部分”和“还需要找什么证据”。未读到或无法核实的信息保持未知。卡片先保存到我指定的本地位置；回写 Zotero 另按我授权的范围处理。</p></div>
+        <p class="quiet">页码优先写 PDF 物理页码；论文印刷页码不同，可同时标注。PDF 共多少页，不等于论文正式引用的起止页码。</p>
+      </section>
+
+      <section id="citations" class="section" data-search="引用 citation Word bibliography 文献综述 参考文献 动态字段 静态文本 插件 Refresh Add Edit Cite">
+        <div class="section-head"><span class="section-number">05</span><div><p class="section-kicker">第一次引用，也要可追溯</p><h2>完成一次可靠引用</h2></div></div>
+        <p class="lead">先对照论文首页核对题录，再生成引用。学校格式需单独核实；练习样式通过，不代表正式论文格式已验收。</p>
+        <div class="grid-2"><div class="card"><span class="card-label">只做阅读与资料整理</span><h3>普通参考文献示例即可</h3><p>让助手生成带来源的引用示例，并注明使用的格式。它是<strong>静态文本</strong>，后续改作者、年份或编号时不会自动更新。</p><p>不使用 Word，可以暂缓 Word 验证，继续阅读与卡片整理。</p></div><div class="card"><span class="card-label">使用 Word 撰写论文</span><h3>在练习文档里验收动态引用</h3><p>新建一份练习文档，确认 Word 的 Zotero 标签页可用，然后插入一条引文、生成参考文献表、点击 Refresh 并检查仍可编辑。</p><p>不要拿正在撰写的学位论文测试安装，也不要点击 Unlink Citations 解除关联。</p></div></div>
+        <div class="mini-flow" aria-label="Word 引用验证"><span>Add/Edit Citation<br>插入或编辑引文</span><b aria-hidden="true">→</b><span>Add/Edit Bibliography<br>生成参考文献表</span><b aria-hidden="true">→</b><span>Refresh<br>刷新后仍可编辑</span></div>
+        <div class="prompt"><div class="prompt-head"><span>让助手协助验证 Word</span><button class="copy-button" type="button" data-copy="prompt-citation">复制提示词</button></div><p class="prompt-text" id="prompt-citation">请用这篇论文帮我完成一次 Zotero 引用练习。先核对作者、年份、题名、期刊和 DOI。若我使用 Word，在新建练习文档中检查 Zotero 插件，插入引文和参考文献表，刷新后确认仍能编辑；不要改动我的正式论文。若当前工具无法代操作，只引导我完成最少必要点击，并把未验证步骤留待完成。若我不用 Word，提供明确标注为静态文本的引用示例。</p></div>
+        <p class="source"><a href="https://www.zotero.org/support/word_processor_plugin_installation" target="_blank" rel="noopener noreferrer">官方插件安装说明 ↗</a> · <a href="https://www.zotero.org/support/word_processor_plugin_usage" target="_blank" rel="noopener noreferrer">Word 插件使用说明 ↗</a></p>
+      </section>
+
+      <section id="daily" class="section" data-search="日常 使用 检索 搜索 集合 分类 标签 去重 整理 导入 多篇 比较 综述 批注">
+        <div class="section-head"><span class="section-number">06</span><div><p class="section-kicker">上手之后，直接说你的问题</p><h2>把助手用在每天的研究里</h2></div></div>
+        <p class="lead">不必每次从安装讲起。给出目标集合、研究问题和想要的成果，助手只检查这次任务需要的条件。</p>
+        <div class="grid-2">
+          <article class="card"><span class="card-label">找到值得读的一篇</span><h3>检索与筛选</h3><p>按主题、关键词或集合查找文献，先看相关性与全文可用性。</p><div class="prompt"><div class="prompt-head"><span>找文献</span><button class="copy-button" type="button" data-copy="prompt-find">复制提示词</button></div><p class="prompt-text" id="prompt-find">请在我指定的 Zotero 集合中，围绕我的研究问题筛选 3 篇值得优先阅读的文献。列出题名、作者、年份、相关原因和全文可用状态。先说明筛选依据，不要把标题相关当作内容已经核实。</p></div></article>
+          <article class="card"><span class="card-label">把文件变成可找回的资料</span><h3>导入与分类</h3><p>按实际来源区分论文、学位论文、报告与学校规范，先核对清单和重复风险。</p><div class="prompt"><div class="prompt-head"><span>整理资料</span><button class="copy-button" type="button" data-copy="prompt-organize">复制提示词</button></div><p class="prompt-text" id="prompt-organize">请检查我指定目录中的参考资料，做一份可审阅的 Zotero 导入与分类清单，包含文献类型、题录来源、建议集合、疑似重复和待核实信息。只处理指定范围；先不要导入、删除或合并。等我确认具体清单后，再执行获准的操作并读回验证。</p></div></article>
+          <article class="card"><span class="card-label">比较方法，而不只合并摘要</span><h3>多篇论文对照</h3><p>把研究设计、样本、变量和发现放在同一张表里，标出证据覆盖差异。</p><div class="prompt"><div class="prompt-head"><span>比较文献</span><button class="copy-button" type="button" data-copy="prompt-compare">复制提示词</button></div><p class="prompt-text" id="prompt-compare">请比较我指定的这几篇论文，按研究问题、设计、样本、方法、变量、发现和局限做对照表。每个关键判断注明来源和页码；仅有摘要的文献单独标明，不补造细节。最后指出可比较的部分和仍缺少的证据。</p></div></article>
+          <article class="card"><span class="card-label">从你的批注继续思考</span><h3>摘录与写作提纲</h3><p>先读取能实际获取的批注，再按主题组织；没有批注不假装已经读到。</p><div class="prompt"><div class="prompt-head"><span>整理批注</span><button class="copy-button" type="button" data-copy="prompt-notes">复制提示词</button></div><p class="prompt-text" id="prompt-notes">请读取我指定论文中实际可访问的 Zotero 批注，按主题整理成笔记提纲。保留原文出处与页码，把原文摘录、我写的评论和你的推断分开。若当前接口读不到批注，请说明限制，不要根据论文内容伪造我的阅读记录。</p></div></article>
+        </div>
+      </section>
+
+      <section id="troubleshooting" class="section" data-search="故障 排障 失败 连不上 读不到 PDF 下载 附件 丢失 扫描 OCR 乱码 双栏 公式 表格 加密 密码 Word 插件 来源 乱码 摘要">
+        <div class="section-head"><span class="section-number">07</span><div><p class="section-kicker">保留可用部分，只修故障所在层</p><h2>遇到问题，从这里找</h2></div></div>
+        <p class="lead">点击与你现象最接近的一项。报错时告诉助手你正在用的客户端、刚才做了什么，以及不含密钥的错误信息。</p>
+        <div class="troubles">
+          <details><summary>安装了 Skill，助手仍然读不到 Zotero</summary><div class="detail-body"><p>Skill、桌面应用、Local API、MCP 服务和当前会话工具是不同层。配置文件里有名字，只能证明配置存在；独立启动测试通过，也不能替代当前对话的工具调用。</p><div class="prompt"><div class="prompt-head"><span>分层诊断</span><button class="copy-button" type="button" data-copy="prompt-diagnose">复制提示词</button></div><p class="prompt-text" id="prompt-diagnose">请诊断当前客户端为什么读不到 Zotero。依次检查应用运行、Local API 条目与集合、MCP 协议及读取工具、当前会话加载状态，指出失败在哪一层。保留已有成功配置；修复后实际调用一次集合和条目读取，不要仅凭配置文件或终端测试宣布接通。</p></div></div></details>
+          <details><summary>能看到文献标题，却打不开 PDF</summary><div class="detail-body"><p>先检查真实附件是否存在、是否只同步了题录、链接文件是否仍在原位置，以及文件能否本地打开。条目没有 PDF，可能是尚未下载或访问权问题；不能直接判定 MCP 故障。</p><p>请助手报告“附件不存在 / 文件未到本机 / 文件路径失效 / 文件加密 / 接口读取失败”中的实际情况。只从你有权访问的来源补全文。</p></div></details>
+          <details><summary>PDF 不能复制、是扫描件，或提取文字乱码</summary><div class="detail-body"><p>先检查全部页，区分无文字层、部分页未检查、乱码和解析失败。默认抽样结果只能说明已检查的范围。OCR 需要本机已有可用工具；这个 Skill 不捆绑或自动预装 OCR。</p><p>需要识别时生成<strong>全新副本</strong>，保留原 PDF 和批注。默认跳过已有文字页；重做文本层或强制栅格化有额外影响，应在明确范围后处理。</p><p>完成后核对原件未变、页数一致、文字覆盖，并抽查中文、双栏次序、表格与关键数字。<strong>OCR 流程成功不等于文字正确</strong>；旁边的文本文件也可能不含原来就有文字的页面。加入 Zotero 是另一步导入。</p><div class="prompt"><div class="prompt-head"><span>先检查，再生成副本</span><button class="copy-button" type="button" data-copy="prompt-ocr">复制提示词</button></div><p class="prompt-text" id="prompt-ocr">请检查这篇 PDF 的全页文字覆盖，判断是扫描件、乱码、加密还是提取限制。若确实需要 OCR，先说明本机缺少什么，再在已具备工具时生成新的本地副本，保留原 PDF 和批注，不上传文件。校验原件未变、页数和文字覆盖，并抽查关键页面与数字。不要自动强制重做所有页面，也不要把识别成功当作内容准确。</p></div></div></details>
+          <details><summary>浏览器已装 Connector，但论文没有保存进库</summary><div class="detail-body"><p>检查你当前使用的浏览器是否真正启用了扩展，Zotero 是否运行，保存弹窗选择了哪个库和集合。打开论文介绍页再测试，并在 Zotero 里读回同一条目；不要连续点击造成重复保存。</p><p>如果只缺 PDF，先核实网页是否有可访问的全文。商店显示“已安装”不能代替实际保存验收。</p><p class="source"><a href="https://www.zotero.org/support/troubleshooting_translator_issues" target="_blank" rel="noopener noreferrer">Zotero 官方网页保存排障 ↗</a></p></div></details>
+          <details><summary>Word 没有 Zotero 标签页，或引用刷新失败</summary><div class="detail-body"><p>先安全保存当前文档。插件缺失时按 Zotero 官方流程检查；常见入口为 Zotero 的“设置 → 引用 → 文字处理软件”，安装 Microsoft Word 插件后重新打开 Word，具体标签以当前版本为准。</p><p>让助手在新建练习文档中测试插入引文、参考文献表与刷新。不要重置整个 Word、删除用户模板或把动态引文改成普通文字来掩盖问题。</p><p class="source"><a href="https://www.zotero.org/support/word_processor_plugin_troubleshooting" target="_blank" rel="noopener noreferrer">Zotero 官方 Word 插件排障 ↗</a></p></div></details>
+          <details><summary>研究卡片很完整，但看不出是否真的读了全文</summary><div class="detail-body"><p>要求助手列出实际读取的附件、页码范围、问题/方法/结果/局限的来源页，以及关键证据核验情况。元数据、摘要、搜索片段或被截断的文本窗口，不能替代全文。</p><p>若证据不足，请它把对应部分改成“未知 / 待核实”，或标记 <code>FULL TEXT NOT AVAILABLE</code>。你自己的阅读练习状态也应单独保留。</p></div></details>
+        </div>
+      </section>
+
+      <section id="privacy" class="section" data-search="隐私 安全 授权 数据 本地 AI 云端 上传 论文 正文 凭据 API key 同步 修改 删除 批注 原件">
+        <div class="section-head"><span class="section-number">08</span><div><p class="section-kicker">知道数据在哪里，操作改了什么</p><h2>本地读库与 AI 阅读的边界</h2></div></div>
+        <p class="lead">Local API 在本机访问 Zotero。你使用的 AI 服务如何接收、处理与保留内容，需要按客户端、模型服务及账号设置单独判断。</p>
+        <div class="grid-2"><div class="card"><span class="card-label">本机连接</span><h3>Local API 不是云端库授权</h3><p>它让本机程序与正在运行的 Zotero 通信，本身不需要云端 Key。启用 Zotero 同步、登录共享库、调用联网题录检索是另外的行为，应按需要分别确认。</p></div><div class="card"><span class="card-label">交给 AI 理解</span><h3>选中的论文内容可能进入模型上下文</h3><p>当助手读取正文并交给模型分析时，相关内容可能提交给所用 AI 服务。<strong>“本地读库”不等于“论文内容完全不离开电脑”</strong>。需要严格本地处理时，先让助手核实整条处理路径。</p></div></div>
+        <div class="note"><strong>本手册本身：</strong>不读取你的文献库，不联网统计，不加载外部字体或脚本，不保存搜索词或复制记录。搜索只过滤页面正文；复制只处理你点击的提示词。点击外部链接时，才由浏览器打开对应网站。</div>
+        <ul class="checklist"><li>本地读取与新副本生成按当前授权执行；原 PDF、批注和 Zotero 数据库保留。</li><li>导入、标签、集合调整或笔记回写，按你明确授权的范围执行，并读回验证。</li><li>删除、合并、移动原文件和外部上传，先确定具体范围；不把一次读取授权扩大到整个文献库。</li><li>在线 OCR 使用前，说明上传内容、用途、费用与保留政策，再由你决定。</li><li>配置修改先备份，只改目标设置。不要把密钥、登录令牌或含私人信息的日志贴进公共问题区。</li></ul>
+        <p class="source">Zotero 自身的数据处理与同步规则见<a href="https://www.zotero.org/support/privacy" target="_blank" rel="noopener noreferrer">官方隐私说明 ↗</a>；AI 服务的规则需要另查相应服务。</p>
+      </section>
+
+      <section id="updates" class="section" data-search="更新 升级 每周 扫描 自动任务 自动化 后台 经验 记录 lessons 授权 7天 14天 新技能">
+        <div class="section-head"><span class="section-number">09</span><div><p class="section-kicker">保留有用的方法，谨慎增加能力</p><h2>更新发现与经验沉淀</h2></div></div>
+        <p class="lead">发现新工具、安装新工具、记录解决办法，是三件不同的事。它们不会因为你安装了这个 Skill 就全部自动发生。</p>
+        <div class="grid-3"><article class="card"><span class="card-label">使用时检查</span><h3>到期再发现</h3><p>真实使用时检查更新是否到期。正常成功检查间隔至少 7 天；用户明确要求立即重查时可例外。发现器查询公开来源，不提交你的文献内容。</p></article><article class="card"><span class="card-label">后台每周扫描</span><h3>需要另建自动任务</h3><p><strong>须由你授权，并在支持自动任务的客户端中另行创建。</strong> Skill 文件本身不会让电脑定时运行。后台仅在近 14 天有真实使用时检查；无可行动变化保持安静。</p></article><article class="card"><span class="card-label">新增能力</span><h3>审核后再启用</h3><p>候选只代表发现。助手先审查来源、许可证、依赖、兼容性、读写和上传行为，展示具体变更与回滚方式；得到确认才收录或升级。</p></article></div>
+        <div class="note warm"><strong>经验记录由每位用户单独授权。</strong> 作者或其他人的授权不适用于你。启用后，只保存经过验证、已脱敏的症状、适用条件、解决步骤与限制；不保存论文全文、文献标识、私人路径或凭据，也不自动改变系统记忆与权限。</div>
+        <div class="prompt"><div class="prompt-head"><span>想启用时，再发出这条授权</span><button class="copy-button" type="button" data-copy="prompt-lessons">复制提示词</button></div><p class="prompt-text" id="prompt-lessons">我同意 Zotero 助手在本 Skill 的经验记录中保存经过实际验证、已脱敏的排障方法，包括适用条件、验证证据与限制。不要保存论文内容、个人库标识、私人路径、凭据或未脱敏日志；推测的偏好先问我。这个授权不包括安装新工具、升级主流程、向外部上传或创建后台自动任务。</p></div>
+        <p class="quiet">未验证的想法只能标为待验证；旧方法在新版本上失效时，应停用或重新验证。经验越多，不代表无需检查当前环境。</p>
+      </section>
+
+      <section id="completion" class="section" data-search="完成 进度 续接 暂缓 跳过 daily onboarding pending verified deferred not applicable blocked">
+        <div class="section-head"><span class="section-number">10</span><div><p class="section-kicker">下次从这里继续</p><h2>怎样算走完第一次体验？</h2></div></div>
+        <p class="lead">下面是验收清单，不是你的个人进度。真实状态由助手逐项核验并记录；软件环境通过，不等于第一篇论文已经读完。</p>
+        <div class="grid-2"><div class="card"><span class="card-label">五个核心结果</span><h3>每一项都来自实际行动</h3><ul class="checklist"><li>定位了真实库内条目与 PDF 附件。</li><li>检查全页覆盖，阅读所需章节并核对关键证据。</li><li>你完成了一次高亮、摘录或自己的理解表达。</li><li>得到有来源标记、页码和未知项的研究卡片。</li><li>生成一条题录核验过、可追溯的引用。</li></ul></div><div class="card"><span class="card-label">按真实进度续接</span><h3>可以暂缓，不必重来</h3><p>五项核心都验证后，进入日常模式。Connector 和 Word 可按用途单独暂缓，不妨碍阅读核心体验。</p><p>你也可以明确跳过引导直接解决问题；<strong>跳过不会记成完成</strong>。换电脑、客户端或浏览器时，只重新验证相关环境。</p><p class="quiet">已验证 / 待处理 / 暂缓 / 不适用 / 受阻分别记录，不以“文件已生成”补齐所有状态。</p></div></div>
+        <div class="prompt"><div class="prompt-head"><span>下次接着做</span><button class="copy-button" type="button" data-copy="prompt-resume">复制提示词</button></div><p class="prompt-text" id="prompt-resume">使用 Zotero 助手，读取我已有的上手进度，告诉我哪些已经验证、哪些仍待完成。先处理现在最有价值的一步，不重复安装或导入。如果我已经给出具体文献问题，就直接解决它，只检查必要条件。</p></div>
+      </section>
+      <div class="closing"><h3>留下结论，也留下它的出处。</h3><p>从一篇论文开始，练习定位原文、区分来源、写下自己的理解。遇到问题直接告诉助手，让检查与修复围绕你的研究继续推进。</p><p class="print-note">Zotero 助手 Skill v1.1.1 · 作者 yesaze<br>项目：https://github.com/yesaze2077/zotero-assistant-skill</p></div>
+      <footer class="footer"><span>Zotero 助手 · 使用手册 · v1.1.1<br>编写：<strong>yesaze</strong> · MIT 开源许可 · 独立项目，非 Zotero 官方产品</span><span><a href="#overview">返回顶部 ↑</a><br>离线阅读 · 无外部资源依赖</span></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <script>
+    (() => {
+      'use strict';
+      const input = document.getElementById('manual-search');
+      const clear = document.getElementById('search-clear');
+      const status = document.getElementById('search-status');
+      const sections = Array.from(document.querySelectorAll('section.section'));
+      const navLinks = Array.from(document.querySelectorAll('.nav-list a'));
+      const details = Array.from(document.querySelectorAll('details'));
+      const hero = document.querySelector('.hero');
+      const closing = document.querySelector('.closing');
+      const empty = document.getElementById('no-results');
+      const toast = document.getElementById('toast');
+      let toastTimer;
+      let searchOpenState = null;
+      let printOpenState = null;
+      const searchText = new Map(sections.map(section => [section, (section.textContent + ' ' + section.dataset.search).normalize('NFKC').toLocaleLowerCase()]));
+
+      function filter() {
+        const query = input.value.trim().normalize('NFKC').toLocaleLowerCase();
+        const terms = query.split(/\s+/).filter(Boolean);
+        if (terms.length && searchOpenState === null) searchOpenState = details.map(item => item.open);
+        let count = 0;
+        sections.forEach(section => {
+          const match = terms.every(term => searchText.get(section).includes(term));
+          section.hidden = !match;
+          if (match) count++;
+          if (match && terms.length) section.querySelectorAll('details').forEach(item => { item.open = true; });
+        });
+        if (!terms.length && searchOpenState !== null) {
+          details.forEach((item, i) => { item.open = searchOpenState[i]; });
+          searchOpenState = null;
+        }
+        hero.hidden = terms.length > 0;
+        closing.hidden = terms.length > 0;
+        empty.hidden = count > 0;
+        clear.hidden = !input.value;
+        status.textContent = terms.length ? `找到 ${count} 个相关章节。点击目录可退出搜索。` : '搜索本手册，不查询你的文献库。';
+        if (terms.length) navLinks.forEach(link => link.removeAttribute('aria-current'));
+      }
+      function resetSearch(focus) { input.value = ''; filter(); if (focus) input.focus(); }
+      input.addEventListener('input', filter);
+      clear.addEventListener('click', () => resetSearch(true));
+      document.getElementById('reset-search').addEventListener('click', () => resetSearch(true));
+      document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', () => { if (input.value) resetSearch(false); });
+      });
+      document.addEventListener('keydown', event => {
+        const editing = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName) || document.activeElement.isContentEditable;
+        if (event.key === '/' && !editing && !event.metaKey && !event.ctrlKey && !event.altKey) { event.preventDefault(); input.focus(); }
+        if (event.key === 'Escape' && document.activeElement === input) { resetSearch(true); }
+      });
+
+      function announce(message) {
+        window.clearTimeout(toastTimer);
+        toast.textContent = message;
+        toast.hidden = false;
+        toastTimer = window.setTimeout(() => { toast.hidden = true; }, 5000);
+      }
+      function selectPrompt(target) {
+        const selection = window.getSelection();
+        if (!selection) return;
+        const range = document.createRange();
+        range.selectNodeContents(target);
+        selection.removeAllRanges();
+        selection.addRange(range);
+      }
+      document.querySelectorAll('[data-copy]').forEach(button => {
+        button.addEventListener('click', async () => {
+          const target = document.getElementById(button.dataset.copy);
+          const text = target.textContent.trim();
+          let copied = false;
+          try {
+            if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); copied = true; }
+          } catch (_) { /* Offline browsers may deny clipboard access. Try selected-text copy below. */ }
+          if (!copied) {
+            selectPrompt(target);
+            try { copied = document.execCommand('copy'); } catch (_) { copied = false; }
+          }
+          if (copied) {
+            announce('已复制。切换到你的本地 AI 客户端，粘贴后发送。');
+            button.textContent = '已复制';
+            window.setTimeout(() => { button.textContent = '复制提示词'; }, 2200);
+          } else {
+            selectPrompt(target);
+            announce('未能自动复制，提示词已选中。请按 ⌘C（Mac）或 Ctrl+C 复制；也可长按选中文本。');
+          }
+        });
+      });
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+          if (input.value.trim()) return;
+          const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+          if (!visible.length) return;
+          navLinks.forEach(link => {
+            if (link.hash === '#' + visible[0].target.id) link.setAttribute('aria-current', 'location');
+            else link.removeAttribute('aria-current');
+          });
+        }, { rootMargin: '-5% 0px -65% 0px', threshold: 0 });
+        sections.forEach(section => observer.observe(section));
+      }
+      window.addEventListener('beforeprint', () => {
+        if (printOpenState === null) printOpenState = details.map(item => item.open);
+        details.forEach(item => { item.open = true; });
+      });
+      window.addEventListener('afterprint', () => {
+        if (printOpenState !== null) details.forEach((item, i) => { item.open = printOpenState[i]; });
+        printOpenState = null;
+      });
+      document.getElementById('print-button').addEventListener('click', () => window.print());
+    })();
+  </script>
+</body>
+</html>
