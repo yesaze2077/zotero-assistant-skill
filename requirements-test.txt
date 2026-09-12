@@ -1,0 +1,3 @@
+# Test-only dependencies; helpers reuse existing runtimes where possible.
+pypdf>=5,<7
+Pillow>=10.1,<13

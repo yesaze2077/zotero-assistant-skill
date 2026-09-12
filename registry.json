@@ -1,0 +1,227 @@
+{
+  "schema_version": 1,
+  "assistant_version": "1.1.1",
+  "reviewed_at": "2026-09-12",
+  "discovery": {
+    "interval_days": 7,
+    "recent_use_days": 14,
+    "failure_backoff_hours": 12,
+    "mode": "weekly_recent_use"
+  },
+  "entries": [
+    {
+      "id": "54yyyu-zotero-cli",
+      "repo": "54yyyu/zotero-mcp",
+      "source_url": "https://github.com/54yyyu/zotero-mcp",
+      "skill_path": "src/zotero_mcp/skills/zotero-cli/SKILL.md",
+      "pinned_ref": "v0.11.0",
+      "version": "0.11.0",
+      "license": "MIT",
+      "observed_skill_commit": "cb3e4f9b069f27cdcdc32af58309fe4427a4655c",
+      "approval_status": "available-if-installed",
+      "auto_route": true,
+      "local_executable": "zotero-cli",
+      "local_skill_pattern": ".local/share/uv/tools/zotero-mcp-server/lib/python*/site-packages/zotero_mcp/skills/zotero-cli/SKILL.md",
+      "enabled_capabilities": [
+        "library.search",
+        "library.collections",
+        "library.metadata",
+        "library.annotations.read",
+        "library.notes.read",
+        "pdf.text",
+        "pdf.path",
+        "bibliography.export"
+      ],
+      "dependencies": [
+        "Existing zotero-mcp-server",
+        "Zotero Local API"
+      ],
+      "limits": [
+        "config does not test connectivity",
+        "CLI has independent write commands: use read adapter only",
+        "No OCR",
+        "Semantic search needs optional models and index",
+        "MCP allowlist does not gate CLI"
+      ]
+    },
+    {
+      "id": "local-pdf-ocr",
+      "approval_status": "available-if-installed",
+      "auto_route": true,
+      "local_executable": "ocrmypdf",
+      "enabled_capabilities": [
+        "pdf.inspect",
+        "pdf.ocr.new_copy"
+      ],
+      "dependencies": [
+        "Existing OCRmyPDF",
+        "Tesseract languages",
+        "Existing Python PDF parser"
+      ],
+      "limits": [
+        "OCR completion does not prove recognition accuracy",
+        "Never overwrite source or Zotero storage",
+        "Full sidecar text may omit pages already containing text"
+      ]
+    },
+    {
+      "id": "existing-document-skills",
+      "approval_status": "available-if-installed",
+      "auto_route": true,
+      "skill_names": [
+        "pdf:pdf",
+        "documents:documents",
+        "spreadsheets:Spreadsheets",
+        "academic-paper",
+        "academic-paper-reviewer"
+      ],
+      "enabled_capabilities": [
+        "pdf.visual_review",
+        "document.edit",
+        "literature.matrix",
+        "academic.write",
+        "academic.review"
+      ],
+      "limits": [
+        "Resolve actual availability from current session skill catalog",
+        "Load only the skill needed for the user's task"
+      ]
+    },
+    {
+      "id": "openai-zotero",
+      "repo": "openai/plugins",
+      "source_url": "https://github.com/openai/plugins/tree/main/plugins/zotero",
+      "skill_path": "plugins/zotero/skills/zotero/SKILL.md",
+      "version": "0.1.2",
+      "license": "MIT (plugin manifest)",
+      "reviewed_source_commit": "15d07db81944792d81d850035224b5df1af82fad",
+      "approval_status": "candidate",
+      "auto_route": false,
+      "enabled_capabilities": [],
+      "candidate_capabilities": [
+        "connection.probe",
+        "draft.citations",
+        "pdf.indexed_text",
+        "library.import"
+      ],
+      "dependencies": [
+        "Python standard library",
+        "Zotero Local API and connector"
+      ],
+      "limits": [
+        "Not installed",
+        "No OCR",
+        "enable may alter preferences and restart Zotero",
+        "Imports write to library"
+      ]
+    },
+    {
+      "id": "bubble-research-assistant",
+      "repo": "Bubble-OoO/zotero-research-assistant-skill",
+      "source_url": "https://github.com/Bubble-OoO/zotero-research-assistant-skill",
+      "skill_path": "SKILL.md",
+      "reviewed_source_commit": "33a1150a566a8a65750565e1be396330c8f1eb34",
+      "license": null,
+      "approval_status": "candidate",
+      "auto_route": false,
+      "enabled_capabilities": [],
+      "candidate_capabilities": [
+        "agent.setup",
+        "collection.recursive_read",
+        "pdf.text",
+        "notes.write"
+      ],
+      "dependencies": [
+        "Python>=3.10",
+        "pyzotero",
+        "PyMuPDF"
+      ],
+      "limits": [
+        "License not found: clarify before copying or redistributing code",
+        "No OCR",
+        "Empty text may return ok=true",
+        "Health checks collections only"
+      ]
+    },
+    {
+      "id": "cliuhub-zotero-manage",
+      "repo": "cliuhub/zotero-claude-plugin",
+      "source_url": "https://github.com/cliuhub/zotero-claude-plugin",
+      "skill_path": "skills/zotero-manage/SKILL.md",
+      "version": "0.1.6",
+      "reviewed_source_commit": "e7b1cd24b0d5b882fa90572e39ff0c3729776747",
+      "license": null,
+      "approval_status": "candidate",
+      "auto_route": false,
+      "enabled_capabilities": [],
+      "candidate_capabilities": [
+        "library.crud",
+        "pdf.ocr.local"
+      ],
+      "dependencies": [
+        "Zotero XPI",
+        "Node",
+        "Python pdfplumber/pypdf",
+        "macOS Swift for native OCR"
+      ],
+      "limits": [
+        "Reviewed XPI declares max version 9.0.*; verify against the installed Zotero version before use",
+        "Pure image PDF fallback has an early-error path",
+        "License absent",
+        "Additional write bridge"
+      ]
+    },
+    {
+      "id": "wenyu-zotero-skills",
+      "repo": "WenyuChiou/zotero-skills",
+      "source_url": "https://github.com/WenyuChiou/zotero-skills",
+      "skill_path": "skills/zotero-skills/SKILL.md",
+      "reviewed_source_commit": "2c670d00cfd10b750874c7ea0ea10a424774e242",
+      "license": "MIT",
+      "approval_status": "reference-only",
+      "auto_route": false,
+      "enabled_capabilities": [],
+      "candidate_capabilities": [
+        "library.crud",
+        "library.tags",
+        "library.notes"
+      ],
+      "dependencies": [
+        "Python",
+        "pyzotero",
+        "Web API credentials for writes"
+      ],
+      "limits": [
+        "No PDF/OCR",
+        "Contains permanent deletion",
+        "Some README client and Local API claims are outdated"
+      ]
+    },
+    {
+      "id": "kerim-zotero-mcp-search",
+      "repo": "kerim/zotero-mcp-skill",
+      "source_url": "https://github.com/kerim/zotero-mcp-skill",
+      "skill_path": "SKILL.md",
+      "observed_skill_commit": "1c804e65eb593c02dd48881973b06d810707bda1",
+      "license": "MIT",
+      "approval_status": "reference-only",
+      "auto_route": false,
+      "enabled_capabilities": [],
+      "candidate_capabilities": [
+        "search.multistrategy",
+        "search.semantic.workflow"
+      ],
+      "dependencies": [
+        "Zotero MCP",
+        "Optional semantic index",
+        "Claude-specific assumptions"
+      ],
+      "limits": [
+        "No installer or OCR",
+        "Historical crash claims not revalidated",
+        "Some tool names unavailable locally",
+        "Do not inherit mandatory multi-agent workflow"
+      ]
+    }
+  ]
+}

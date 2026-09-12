@@ -1,0 +1,21 @@
+# Private runtime state and local research outputs
+state/
+outputs/
+work/
+.history/
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+*.log
+.DS_Store
+*.pdf
+*.sqlite*
+*.db
+*.toml
+# New personal lessons require individual review before publication.
+lessons/*
+!lessons/connection-config-is-not-health.json
+!lessons/chinese-ocr-font-and-language.json
+!lessons/fulltext-envelope-needs-body.json
